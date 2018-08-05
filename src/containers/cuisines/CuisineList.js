@@ -1,14 +1,14 @@
 import React from 'react';
-import CourseRow from "../../components/CourseRow";
-import CourseService from '../../services/CourseService';
+import CourseRow from "../../components/CuisineRow";
+import CuisineService from '../../services/CuisineService';
 
 class CourseList extends React.Component {
 
     constructor() {
         super();
-        this.courseService = CourseService.instance;
-        this.state = {course: {id: 0, title: ''},
-                        courses: []};
+        this.cuisineService = CuisineService.instance;
+        this.state = {cuisine: {id: 0, name: ''},
+                        cuisines: []};
 
 
         //binding "this" to event handlers
@@ -66,7 +66,7 @@ class CourseList extends React.Component {
 
     createCourse() {
       var c = this.state.course;
-        this.courseService.createCourse(c)
+        this.cuisineService.createCourse(c)
             .then(() => {
                 this.setState({
                     course: {title: ''}
@@ -80,7 +80,7 @@ class CourseList extends React.Component {
     updateCourse(event) {
         console.log(this.state);
         //this.setState({course: {id: this.state.course.id, title: event.target.value}});
-        this.courseService.updateCourse(this.state.course.id, this.state.course)
+        this.cuisineService.updateCourse(this.state.course.id, this.state.course)
             .then(this.findAllCourses)
             .then(this.clearCourseFormInputs);
 
@@ -90,7 +90,7 @@ class CourseList extends React.Component {
 
     deleteCourse(courseId) {
         if (window.confirm("Are you sure you want to delete this course?")) {
-            this.courseService.deleteCourse(courseId)
+            this.cuisineService.deleteCourse(courseId)
                 .then(this.findAllCourses);
         }
     }
@@ -99,12 +99,12 @@ class CourseList extends React.Component {
 
         this.setState({course: course});
         console.log(this.state);
-        // this.courseService.findCourseById(course)
+        // this.cuisineService.findCourseById(course)
         //     .then(this.putCourseInForm(this.state.course));
     }
 
     findAllCourses() {
-        this.courseService.findAllCourses()
+        this.cuisineService.findAllCourses()
             .then(courses => {
                 this.setState({courses: courses});
             });
@@ -113,36 +113,33 @@ class CourseList extends React.Component {
     render() {
         return (
             <div>
-                <h2>Course List</h2>
+                <h2>Cuisine List</h2>
                 <table className="table table-bordered table-striped table-responsive-md"
                     align='center'>
                     <thead>
                         <tr>
-                            <th><span>Title</span></th>
-                            <th><span>Date Created</span></th>
-                            <th><span>Date Modified</span></th>
-                            <th><span>Actions</span></th>
+                            <th><span>Cuisine Name</span></th>
                             {/* <th><ModuleList2*/}
                             {/*     courseId={this.state.courseId}/></th>*/}
                         </tr>
                     <tr>
-                        <th><input id="titleFld"
-                               placeholder="cs101"
+                        <th><input id="cuisineName"
+                               placeholder="American"
                                onChange={this.titleChanged}
-                               value={this.state.course.title}/>  </th>
+                               value={this.state.cuisine.name}/>  </th>
                         <th></th>
                         <th></th>
-                        <th><button onClick={this.createCourse}>
+                        <th><button onClick={this.createCuisine}>
                             <i className="fa fa-plus"/>
                         </button>
-                            <button onClick={this.updateCourse}>
+                            <button onClick={this.updateCuisine}>
                                 <i className="fa fa-check"/>
                             </button>
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                        {this.courseRows()}
+                        {this.cuisineRows()}
                     </tbody>
                     {/*<Route path={'/api/course/${this.props.course.id}/module'}*/}
                 </table>

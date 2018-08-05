@@ -1,5 +1,5 @@
 import React from 'react';
-import LessonService from '../../services/LessonService'
+import LessonService from '../../services/RecipeService'
 import WidgetListContainer from "../widgets/WidgetListContainer";
 
 class LessonEditor extends React.Component {

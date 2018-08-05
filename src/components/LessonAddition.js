@@ -1,5 +1,5 @@
 import React from 'react';
-import LessonService from '../services/LessonService'
+import LessonService from '../services/RecipeService'
 import { Link } from 'react-router-dom'
 
 export default class LessonAddition extends React.Component {

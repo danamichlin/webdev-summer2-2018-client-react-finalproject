@@ -1,7 +1,7 @@
 import React from 'react'
 import ModuleList2 from '../modules/ModuleList2'
-import LessonTabs from '../lessons/LessonTabs'
-import CourseService from "../../services/CourseService";
+import LessonTabs from '../recipes/Recipes'
+import CourseService from "../../services/CuisineService";
 
 class CourseEditor extends React.Component {
 
@@ -15,7 +15,7 @@ class CourseEditor extends React.Component {
                 courseId: 0,
                 module: null
             }};
-        this.courseService = CourseService.instance;
+        this.cuisineService = CourseService.instance;
 
         this.selectCourse = this.selectCourse.bind(this);
         this.onModuleSelected = this.onModuleSelected.bind(this);
@@ -23,7 +23,7 @@ class CourseEditor extends React.Component {
 
     componentDidMount() {
         this.selectCourse(this.props.match.params.courseId);
-        this.course = this.courseService.findCourseById(this.props.match.params.courseId)
+        this.course = this.cuisineService.findCourseById(this.props.match.params.courseId)
             .then((course) => {
                 this.course = course;
                 this.forceUpdate();

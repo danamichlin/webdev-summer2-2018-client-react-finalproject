@@ -1,5 +1,5 @@
-import CourseList from './courses/CourseList';
-import CourseEditor from './courses/CourseEditor';
+import CourseList from './cuisines/CuisineList';
+import CourseEditor from './cuisines/CuisineEditor';
 import ModuleEditor from './modules/ModuleEditor';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import React from 'react';
@@ -12,16 +12,16 @@ class CourseManager extends React.Component {
             <Router>
                 <div>
                 {/*<root>*/}
-                    <Route exact path="/course/list"
-                           component={CourseList}>
+                    <Route exact path="/cuisine/list"
+                           component={CuisineList}>
                     </Route>
                     <Route exact path="/course/:courseId/edit"
-                           component={CourseEditor}>
+                           component={CuisineEditor}>
                     </Route>
                     {/*<Route exact path="/course/:courseId/module/:moduleId/lesson/:lessonId"*/}
                            {/*component={LessonEditor}*/}
-                    <Route exact path="/lesson/:lessonId/widget"
-                           component={WidgetListContainer}>
+                    <Route exact path="/cuisine/:cuisineId/recipe"
+                           component={RecipeEditorContainer}>
                     </Route>
                     {/*<Link to="/widgets">Widgets</Link>*/}
 
